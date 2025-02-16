@@ -1,0 +1,101 @@
+$screensizes: (576px, 768px, 992px, 1200px);
+$screen-names: (sm, md, lg, xl);
+
+
+@use "sass:math";
+
+
+[class*=grid-] {
+    display:grid;
+}
+
+$two-cols: 1fr 1fr;
+.grid-2 {
+	grid-template-columns: $two-cols;
+}
+@media screen and (min-width: 576px) {
+	.grid-2-md {
+		grid-template-columns: $two-cols;
+	}
+}
+@media screen and (min-width: 768px) {
+	.grid-2-md {
+		grid-template-columns: $two-cols;
+	}
+}
+@media screen and (min-width: 992px) {
+	.grid-2-lg {
+		grid-template-columns: $two-cols;
+	}
+}
+@media screen and (min-width: 1200px) {
+	.grid-2-xl {
+		grid-template-columns: $two-cols;
+	}
+}
+
+$three-cols: 1fr 1fr 1fr;
+.grid-3 {
+	grid-template-columns: $three-cols;
+}
+@media screen and (min-width: 576px) {
+	.grid-3-md {
+		grid-template-columns: $three-cols;
+	}
+}
+@media screen and (min-width: 768px) {
+	.grid-3-md {
+		grid-template-columns: $three-cols;
+	}
+}
+@media screen and (min-width: 992px) {
+	.grid-3-lg {
+		grid-template-columns: $three-cols;
+	}
+}
+@media screen and (min-width: 1200px) {
+	.grid-3-xl {
+		grid-template-columns: $three-cols;
+	}
+}
+
+$four-cols: 1fr 1fr 1fr 1fr;
+.grid-4 {
+	grid-template-columns: $four-cols;
+}
+@media screen and (min-width: 576px) {
+	.grid-4-md {
+		grid-template-columns: $four-cols;
+	}
+}
+@media screen and (min-width: 768px) {
+	.grid-4-md {
+		grid-template-columns: $four-cols;
+	}
+}
+@media screen and (min-width: 992px) {
+	.grid-4-lg {
+		grid-template-columns: $four-cols;
+	}
+}
+@media screen and (min-width: 1200px) {
+	.grid-4-xl {
+		grid-template-columns: $four-cols;
+	}
+}
+
+
+$gap-base: 4px;
+
+@mixin grid-gap-class($multiplier) {
+  [class*=grid].gap-#{$multiplier} {
+    //grid-column-gap: $gap-base * calc(math.pow($multiplier, 2) / 2);
+    grid-column-gap: $gap-base * calc(math.pow($multiplier, 2) / 3);
+    grid-row-gap: $gap-base * calc(math.pow($multiplier, 2) / 3);
+  }
+}
+
+@for $i from 1 through 5 {
+  @include grid-gap-class($i);
+}
+
