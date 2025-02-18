@@ -1,90 +1,44 @@
-$screensizes: (576px, 768px, 992px, 1200px);
-$screen-names: (sm, md, lg, xl);
-
-
 @use "sass:math";
+@use "sass:map";
+@use "sass:list";
+@use "sass:string";
+
+$breakpoints: (
+	"sm": 576px, 
+	"md": 768px, 
+	"lg": 992px, 
+	"xl": 1200px
+);
+
+$screen-names: map.keys($breakpoints);
+$screen-sizes: map.values($breakpoints); 
 
 
 [class*=grid-] {
     display:grid;
 }
 
-$two-cols: 1fr 1fr;
-.grid-2 {
-	grid-template-columns: $two-cols;
-}
-@media screen and (min-width: 576px) {
-	.grid-2-md {
-		grid-template-columns: $two-cols;
+// Generate grid styles
+@for $i from 1 through list.length($screen-sizes) {
+	// Base style
+	.grid-#{$i} {
+		grid-template-columns: repeater($i, "fr");
 	}
-}
-@media screen and (min-width: 768px) {
-	.grid-2-md {
-		grid-template-columns: $two-cols;
-	}
-}
-@media screen and (min-width: 992px) {
-	.grid-2-lg {
-		grid-template-columns: $two-cols;
-	}
-}
-@media screen and (min-width: 1200px) {
-	.grid-2-xl {
-		grid-template-columns: $two-cols;
+
+	// Mobile-first screen-size scoped media queries
+	@for $ii from 1 through list.length($screen-sizes) {
+		$size: list.nth($screen-sizes, $ii);
+		$name: list.nth($screen-names, $ii);
+
+		@media screen and (min-width: $size) {
+			.grid-#{$i}-#{$name} {
+				grid-template-columns: repeater($i, "fr");
+			}
+		}
 	}
 }
 
-$three-cols: 1fr 1fr 1fr;
-.grid-3 {
-	grid-template-columns: $three-cols;
-}
-@media screen and (min-width: 576px) {
-	.grid-3-md {
-		grid-template-columns: $three-cols;
-	}
-}
-@media screen and (min-width: 768px) {
-	.grid-3-md {
-		grid-template-columns: $three-cols;
-	}
-}
-@media screen and (min-width: 992px) {
-	.grid-3-lg {
-		grid-template-columns: $three-cols;
-	}
-}
-@media screen and (min-width: 1200px) {
-	.grid-3-xl {
-		grid-template-columns: $three-cols;
-	}
-}
-
-$four-cols: 1fr 1fr 1fr 1fr;
-.grid-4 {
-	grid-template-columns: $four-cols;
-}
-@media screen and (min-width: 576px) {
-	.grid-4-md {
-		grid-template-columns: $four-cols;
-	}
-}
-@media screen and (min-width: 768px) {
-	.grid-4-md {
-		grid-template-columns: $four-cols;
-	}
-}
-@media screen and (min-width: 992px) {
-	.grid-4-lg {
-		grid-template-columns: $four-cols;
-	}
-}
-@media screen and (min-width: 1200px) {
-	.grid-4-xl {
-		grid-template-columns: $four-cols;
-	}
-}
-
-
+// Generate gap classes
 $gap-base: 4px;
 
 @mixin grid-gap-class($multiplier) {
@@ -98,4 +52,3 @@ $gap-base: 4px;
 @for $i from 1 through 5 {
   @include grid-gap-class($i);
 }
-

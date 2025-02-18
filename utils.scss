@@ -1,0 +1,9 @@
+@function repeater($n, $character) {
+    $output: "";
+
+    @for $i from 1 through $n {
+        $output: $output +" "+ $character;
+    }
+
+    @return unquote($output);
+}
