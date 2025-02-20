@@ -1,3 +1,5 @@
+@use "sass:string";
+
 /* =================================================
 Helper functions/utilities
 ==================================================== */
@@ -8,10 +10,10 @@ Helper functions/utilities
     $output: "";
 
     @for $i from 1 through $n {
-        $output: $output +" "+ $character;
+        $output: $output + " " + $character;
     }
 
-    @return unquote($output);
+    @return string.unquote($output);
 }
 
 // Return either a multiple of 10 or multiple of 5

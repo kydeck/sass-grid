@@ -1,7 +1,8 @@
 @use "sass:math";
 @use "sass:map";
 @use "sass:list";
-@use "sass:string";
+
+@use 'utils';
 
 $breakpoints: (
 	"sm": 576px, 
@@ -22,7 +23,7 @@ $screen-sizes: map.values($breakpoints);
 @for $i from 1 through list.length($screen-sizes) {
 	// Base style
 	.grid-#{$i} {
-		grid-template-columns: repeater($i, "fr");
+		grid-template-columns: utils.repeater($i, "fr");
 	}
 
 	// Mobile-first screen-size scoped media queries
@@ -32,7 +33,7 @@ $screen-sizes: map.values($breakpoints);
 
 		@media screen and (min-width: $size) {
 			.grid-#{$i}-#{$name} {
-				grid-template-columns: repeater($i, "fr");
+				grid-template-columns: utils.repeater($i, "fr");
 			}
 		}
 	}
@@ -58,7 +59,7 @@ $gap-base: 3px;
         $next-step: calc($next-step/1.5 + $next-step);
     }
 
-    @return round-to-nearest-0-or-5($next-step);
+    @return utils.round-to-nearest-0-or-5($next-step);
 }
 
 @for $i from 1 through 5 {
