@@ -1,0 +1,129 @@
+[class*=grid-] {
+  display: grid;
+}
+
+.grid-1 {
+  grid-template-columns: repeater(1, "fr");
+}
+
+@media screen and (min-width: 576px) {
+  .grid-1-sm {
+    grid-template-columns: repeater(1, "fr");
+  }
+}
+@media screen and (min-width: 768px) {
+  .grid-1-md {
+    grid-template-columns: repeater(1, "fr");
+  }
+}
+@media screen and (min-width: 992px) {
+  .grid-1-lg {
+    grid-template-columns: repeater(1, "fr");
+  }
+}
+@media screen and (min-width: 1200px) {
+  .grid-1-xl {
+    grid-template-columns: repeater(1, "fr");
+  }
+}
+.grid-2 {
+  grid-template-columns: repeater(2, "fr");
+}
+
+@media screen and (min-width: 576px) {
+  .grid-2-sm {
+    grid-template-columns: repeater(2, "fr");
+  }
+}
+@media screen and (min-width: 768px) {
+  .grid-2-md {
+    grid-template-columns: repeater(2, "fr");
+  }
+}
+@media screen and (min-width: 992px) {
+  .grid-2-lg {
+    grid-template-columns: repeater(2, "fr");
+  }
+}
+@media screen and (min-width: 1200px) {
+  .grid-2-xl {
+    grid-template-columns: repeater(2, "fr");
+  }
+}
+.grid-3 {
+  grid-template-columns: repeater(3, "fr");
+}
+
+@media screen and (min-width: 576px) {
+  .grid-3-sm {
+    grid-template-columns: repeater(3, "fr");
+  }
+}
+@media screen and (min-width: 768px) {
+  .grid-3-md {
+    grid-template-columns: repeater(3, "fr");
+  }
+}
+@media screen and (min-width: 992px) {
+  .grid-3-lg {
+    grid-template-columns: repeater(3, "fr");
+  }
+}
+@media screen and (min-width: 1200px) {
+  .grid-3-xl {
+    grid-template-columns: repeater(3, "fr");
+  }
+}
+.grid-4 {
+  grid-template-columns: repeater(4, "fr");
+}
+
+@media screen and (min-width: 576px) {
+  .grid-4-sm {
+    grid-template-columns: repeater(4, "fr");
+  }
+}
+@media screen and (min-width: 768px) {
+  .grid-4-md {
+    grid-template-columns: repeater(4, "fr");
+  }
+}
+@media screen and (min-width: 992px) {
+  .grid-4-lg {
+    grid-template-columns: repeater(4, "fr");
+  }
+}
+@media screen and (min-width: 1200px) {
+  .grid-4-xl {
+    grid-template-columns: repeater(4, "fr");
+  }
+}
+/* =======================================================
+Grid system gaps
+========================================================== */
+[class*=grid-].gap-1 {
+  grid-column-gap: round-to-nearest-0-or-5(5px);
+  grid-row-gap: round-to-nearest-0-or-5(5px);
+}
+
+[class*=grid-].gap-2 {
+  grid-column-gap: round-to-nearest-0-or-5(8.3333333333px);
+  grid-row-gap: round-to-nearest-0-or-5(8.3333333333px);
+}
+
+[class*=grid-].gap-3 {
+  grid-column-gap: round-to-nearest-0-or-5(13.8888888889px);
+  grid-row-gap: round-to-nearest-0-or-5(13.8888888889px);
+}
+
+[class*=grid-].gap-4 {
+  grid-column-gap: round-to-nearest-0-or-5(23.1481481481px);
+  grid-row-gap: round-to-nearest-0-or-5(23.1481481481px);
+}
+
+[class*=grid-].gap-5 {
+  grid-column-gap: round-to-nearest-0-or-5(38.5802469136px);
+  grid-row-gap: round-to-nearest-0-or-5(38.5802469136px);
+}
+
+/*# sourceMappingURL=grid.css.map */

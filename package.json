@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "sass": "^1.85.0"
+  },
+  "scripts": {
+    "sass-dev": "sass --watch --update --style=expanded src/grid.scss dist/grid.css",
+    "sass-prod": "sass --no-source-map --style=compressed src/grid.scss dist/grid.min.css"
+}
+}

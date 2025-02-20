@@ -1,0 +1,31 @@
+/* =================================================
+Helper functions/utilities
+==================================================== */
+
+// Repeat a given string n number of times.
+// Usage: repater(3, "fr") => 'fr fr fr'
+@function repeater($n, $character) {
+    $output: "";
+
+    @for $i from 1 through $n {
+        $output: $output +" "+ $character;
+    }
+
+    @return unquote($output);
+}
+
+// Return either a multiple of 10 or multiple of 5
+// Usage: round-to-nearest-0-or-5(28.5px) => 30px;  round-to-nearest-0-or-5(14.1111px) => 15px;
+@function round-to-nearest-0-or-5($number) {
+    $remainder: $number % 10;
+
+    @if $remainder < 3 {
+        @return $number - $remainder;
+    }
+    @else if $remainder < 8 {
+        @return $number - $remainder + 5;
+    }
+    @else {
+        @return $number - $remainder + 10;
+    }
+}
