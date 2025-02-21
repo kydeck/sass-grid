@@ -5,10 +5,12 @@
 @use 'utils';
 
 $breakpoints: (
+	"xs": 446px,
 	"sm": 576px, 
 	"md": 768px, 
 	"lg": 992px, 
-	"xl": 1200px
+	"xl": 1200px,
+	"xxl": 1400px
 );
 
 $screen-names: map.keys($breakpoints);
@@ -19,13 +21,16 @@ $screen-sizes: map.values($breakpoints);
     display:grid;
 }
 
-// Generate grid styles
+// Generate base grid styles
 @for $i from 1 through list.length($screen-sizes) {
 	// Base style
 	.grid-#{$i} {
-		grid-template-columns: utils.repeater($i, "fr");
+		grid-template-columns: utils.repeater($i, "1fr");
 	}
+}
 
+// Generate responsive grid styles
+@for $i from 1 through list.length($screen-sizes) {
 	// Mobile-first screen-size scoped media queries
 	@for $ii from 1 through list.length($screen-sizes) {
 		$size: list.nth($screen-sizes, $ii);
@@ -33,7 +38,7 @@ $screen-sizes: map.values($breakpoints);
 
 		@media screen and (min-width: $size) {
 			.grid-#{$i}-#{$name} {
-				grid-template-columns: utils.repeater($i, "fr");
+				grid-template-columns: utils.repeater($i, "1fr");
 			}
 		}
 	}
